@@ -1,0 +1,14 @@
+div.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.card {
+    width: calc(100% / 5);
+}
+
+div.card img {
+    object-position: center;
+    object-fit: cover;
+    aspect-ratio: 1/1.5;
+}

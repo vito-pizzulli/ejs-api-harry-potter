@@ -1,0 +1,103 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+    <!-- User selection of what they want to view -->
+    <h2>What do you want to see?</h2>
+    <form id="search-type" method="GET">
+        <button type="submit" formaction="/">Home</button>
+        <button type="submit" formaction="/books/page/1">Books</button>
+        <button type="submit" formaction="/characters/page/1">Characters</button>
+        <button type="submit" formaction="/movies/page/1">Movies</button>
+        <button type="submit" formaction="/potions/page/1">Potions</button>
+        <button type="submit" formaction="/spells/page/1">Spells</button>
+    </form>
+
+    <!-- User selection printed in cards -->
+    <% if (result.data) { %>
+        <div class="card-container">
+            <% result.data.forEach(function(item) { %>
+                <% if (item.type === "book") { %>
+                    <div class="card">
+                        <img src="<%= item.attributes.cover || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.cover %>">
+                        <div class="card-body">
+                            <h5 class="card-title">Title: <%= item.attributes.title ? item.attributes.title : "Not specified" %></h5>
+                            <p class="card-text">Pages: <%= item.attributes.pages ? item.attributes.pages : "Not specified" %></p>
+                            <p class="card-text">Author: <%= item.attributes.author ? item.attributes.author : "Not specified" %></p>
+                            <p class="card-text">Release date: <%= item.attributes.release_date ? item.attributes.release_date : "Not specified" %></p>
+                        </div>
+                    </div>
+                <% } else if (item.type === "character") { %>
+                    <div class="card">
+                        <img src="<%= item.attributes.image || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.name %>">
+                        <div class="card-body">
+                            <h5 class="card-title">Name: <%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
+                            <p class="card-text">Species: <%= item.attributes.species ? item.attributes.species : "Not specified" %></p>
+                            <p class="card-text">Gender: <%= item.attributes.gender ? item.attributes.gender : "Not specified" %></p>
+                            <p class="card-text">Born: <%= item.attributes.born ? item.attributes.born : "Not specified" %></p>
+                        </div>
+                    </div>
+                <% } else if (item.type === "movie") { %>
+                    <div class="card">
+                        <img src="<%= item.attributes.poster || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.poster %>">
+                        <div class="card-body">
+                            <h5 class="card-title">Title: <%= item.attributes.title ? item.attributes.title : "Not specified" %></h5>
+                            <p class="card-text">Running time: <%= item.attributes.running_time ? item.attributes.running_time : "Not specified" %></p>
+                            <p class="card-text">Box office: <%= item.attributes.box_office ? item.attributes.box_office : "Not specified" %></p>
+                            <p class="card-text">Release date: <%= item.attributes.release_date ? item.attributes.release_date : "Not specified" %></p>
+                        </div>
+                    </div>
+                <% } else if (item.type === "potion") { %>
+                    <div class="card">
+                        <img src="<%= item.attributes.image || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.image %>">
+                        <div class="card-body">
+                            <h5 class="card-title">Name: <%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
+                            <p class="card-text">Effect: <%= item.attributes.effect ? item.attributes.effect : "Not specified" %></p>
+                            <p class="card-text">Difficulty: <%= item.attributes.difficulty ? item.attributes.difficulty : "Not specified" %></p>
+                            <p class="card-text">Ingredients: <%= item.attributes.ingredients ? item.attributes.ingredients : "Not specified" %></p>
+                        </div>
+                    </div>
+                <% } else if (item.type === "spell") { %>
+                    <div class="card">
+                        <img src="<%= item.attributes.image || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.image %>">
+                        <div class="card-body">
+                            <h5 class="card-title">Name: <%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
+                            <p class="card-text">Effect: <%= item.attributes.effect ? item.attributes.effect : "Not specified" %></p>
+                            <p class="card-text">Category: <%= item.attributes.category ? item.attributes.category : "Not specified" %></p>
+                            <p class="card-text">Light: <%= item.attributes.light ? item.attributes.light : "Not specified" %></p>
+                        </div>
+                    </div>
+                <% } %>
+            <% }); %>
+        </div>
+
+        <!-- Pagination buttons -->
+        <div class="nav-buttons">
+            <form method="GET">
+                <% if (result.meta.pagination.first) { %>
+                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.first %>">First (<%= result.meta.pagination.first %>)</button>
+                <% } else { %>
+                    <button disabled>First</button>
+                <% } %>
+                <% if (result.meta.pagination.prev) { %>
+                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.prev %>">Previous (<%= result.meta.pagination.prev %>)</button>
+                <% } else { %>
+                    <button disabled>Previous</button>
+                <% } %>
+                <p>Current (<%= result.meta.pagination.current %>)</p>
+                <% if (result.meta.pagination.next) { %>
+                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.next %>">Next (<%= result.meta.pagination.next %>)</button>
+                <% } else { %>
+                    <button disabled>Next</button>
+                <% } %>
+                <% if (result.meta.pagination.last) { %>
+                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.last %>">Last (<%= result.meta.pagination.last %>)</button>
+                <% } else { %>
+                    <button disabled>Last</button>
+                <% } %>
+                <p>Records: <%= result.meta.pagination.records %></p>
+            </form>
+        </div>
+    <% } %>
+</div>
+
+<%- include("partials/footer.ejs") %>
