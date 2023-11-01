@@ -2,15 +2,16 @@
 
 <div class="container">
     <!-- User selection of what they want to view -->
-    <h2>What do you want to see?</h2>
-    <form id="search-type" method="GET">
-        <button type="submit" formaction="/">Home</button>
-        <button type="submit" formaction="/books/page/1">Books</button>
-        <button type="submit" formaction="/characters/page/1">Characters</button>
-        <button type="submit" formaction="/movies/page/1">Movies</button>
-        <button type="submit" formaction="/potions/page/1">Potions</button>
-        <button type="submit" formaction="/spells/page/1">Spells</button>
-    </form>
+    <div class="nav-buttons">
+        <form id="search-type" method="GET">
+            <button type="submit" formaction="/">Home</button>
+            <button type="submit" formaction="/books/page/1">Books</button>
+            <button type="submit" formaction="/characters/page/1">Characters</button>
+            <button type="submit" formaction="/movies/page/1">Movies</button>
+            <button type="submit" formaction="/potions/page/1">Potions</button>
+            <button type="submit" formaction="/spells/page/1">Spells</button>
+        </form>
+    </div>
 
     <!-- User selection printed in cards -->
     <% if (result.data) { %>
@@ -71,7 +72,7 @@
         </div>
 
         <!-- Pagination buttons -->
-        <div class="nav-buttons">
+        <div class="pag-buttons">
             <form method="GET">
                 <% if (result.meta.pagination.first) { %>
                     <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.first %>">First (<%= result.meta.pagination.first %>)</button>
@@ -97,7 +98,17 @@
                 <p>Records: <%= result.meta.pagination.records %></p>
             </form>
         </div>
+    <% } else { %>
+        <h2>Welcome to Harry Potter PensieveDB!</h2>
+        <p>Here you can find everything you need to know about the magical world of Harry Potter, from the books that started it all, to the movies that brought it to life, to the characters that made it unforgettable. You can also discover the secrets of potions and spells.</p>
+        <p>So what are you waiting for? Select a category and start the magic!</p>
     <% } %>
 </div>
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        history.replaceState({}, document.title, window.location.pathname);
+    });
+</script>
 
 <%- include("partials/footer.ejs") %>

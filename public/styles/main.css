@@ -1,3 +1,53 @@
+body {
+    cursor:url('/images/wand.cur'), auto;
+}
+
+header {
+    height: 10vh;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    height: 85vh;
+    overflow-y: scroll;
+    background-color: yellow;
+    padding: 4rem 0;
+}
+
+footer {
+    height: 5vh;
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+div.nav-buttons {
+    position: fixed;
+    background-color: white;
+    top: 10vh;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    padding: .5rem 1rem;
+}
+
+div.nav-buttons form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
 div.card-container {
     display: flex;
     flex-wrap: wrap;
@@ -11,4 +61,24 @@ div.card img {
     object-position: center;
     object-fit: cover;
     aspect-ratio: 1/1.5;
+}
+
+div.pag-buttons {
+    position: fixed;
+    background-color: white;
+    bottom: 5vh;
+    left: 0;
+    width: 100%;
+    padding: .5rem 1rem;
+}
+
+div.pag-buttons form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+div.pag-buttons form p {
+    margin: 0;
 }

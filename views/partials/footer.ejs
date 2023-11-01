@@ -1,5 +1,8 @@
     </main>
     <footer>
-        Created by Vito Pizzulli
+        <p>Created by Vito Pizzulli</p>
+        <% if (result.data) { %>
+            <p><%= result.meta.copyright %></p>
+        <% } %>
     </footer>
 </html>
