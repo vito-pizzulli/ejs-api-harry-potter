@@ -1,7 +1,7 @@
 <%- include("partials/header.ejs") %>
 
 <div class="container">
-    <!-- User selection of what they want to view -->
+    <!-- User selection of what to view with category selection or text search -->
     <div class="nav-buttons">
         <form id="search-type" method="GET">
             <button type="submit" formaction="/">Home</button>
@@ -11,17 +11,23 @@
             <button type="submit" formaction="/potions/page/1">Potions</button>
             <button type="submit" formaction="/spells/page/1">Spells</button>
         </form>
+        <% if (result.data && result.data.length > 0) { %>
+            <form id="search-word" method="GET" action="/<%= result.data[0].type %>s/search">
+                <input type="text" name="wordToSearch">
+                <button>Search</button>
+            </form>
+        <% } %>
     </div>
 
-    <!-- User selection printed in cards -->
-    <% if (result.data) { %>
+    <!-- Display of the searched info -->
+    <% if (result.data && result.data.length > 0) { %>
         <div class="card-container">
             <% result.data.forEach(function(item) { %>
                 <% if (item.type === "book") { %>
                     <div class="card">
                         <img src="<%= item.attributes.cover || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.cover %>">
                         <div class="card-body">
-                            <h5 class="card-title">Title: <%= item.attributes.title ? item.attributes.title : "Not specified" %></h5>
+                            <h5 class="card-title"><%= item.attributes.title ? item.attributes.title : "Not specified" %></h5>
                             <p class="card-text">Pages: <%= item.attributes.pages ? item.attributes.pages : "Not specified" %></p>
                             <p class="card-text">Author: <%= item.attributes.author ? item.attributes.author : "Not specified" %></p>
                             <p class="card-text">Release date: <%= item.attributes.release_date ? item.attributes.release_date : "Not specified" %></p>
@@ -31,7 +37,7 @@
                     <div class="card">
                         <img src="<%= item.attributes.image || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.name %>">
                         <div class="card-body">
-                            <h5 class="card-title">Name: <%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
+                            <h5 class="card-title"><%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
                             <p class="card-text">Species: <%= item.attributes.species ? item.attributes.species : "Not specified" %></p>
                             <p class="card-text">Gender: <%= item.attributes.gender ? item.attributes.gender : "Not specified" %></p>
                             <p class="card-text">Born: <%= item.attributes.born ? item.attributes.born : "Not specified" %></p>
@@ -41,7 +47,7 @@
                     <div class="card">
                         <img src="<%= item.attributes.poster || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.poster %>">
                         <div class="card-body">
-                            <h5 class="card-title">Title: <%= item.attributes.title ? item.attributes.title : "Not specified" %></h5>
+                            <h5 class="card-title"><%= item.attributes.title ? item.attributes.title : "Not specified" %></h5>
                             <p class="card-text">Running time: <%= item.attributes.running_time ? item.attributes.running_time : "Not specified" %></p>
                             <p class="card-text">Box office: <%= item.attributes.box_office ? item.attributes.box_office : "Not specified" %></p>
                             <p class="card-text">Release date: <%= item.attributes.release_date ? item.attributes.release_date : "Not specified" %></p>
@@ -51,7 +57,7 @@
                     <div class="card">
                         <img src="<%= item.attributes.image || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.image %>">
                         <div class="card-body">
-                            <h5 class="card-title">Name: <%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
+                            <h5 class="card-title"><%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
                             <p class="card-text">Effect: <%= item.attributes.effect ? item.attributes.effect : "Not specified" %></p>
                             <p class="card-text">Difficulty: <%= item.attributes.difficulty ? item.attributes.difficulty : "Not specified" %></p>
                             <p class="card-text">Ingredients: <%= item.attributes.ingredients ? item.attributes.ingredients : "Not specified" %></p>
@@ -61,7 +67,7 @@
                     <div class="card">
                         <img src="<%= item.attributes.image || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.image %>">
                         <div class="card-body">
-                            <h5 class="card-title">Name: <%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
+                            <h5 class="card-title"><%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
                             <p class="card-text">Effect: <%= item.attributes.effect ? item.attributes.effect : "Not specified" %></p>
                             <p class="card-text">Category: <%= item.attributes.category ? item.attributes.category : "Not specified" %></p>
                             <p class="card-text">Light: <%= item.attributes.light ? item.attributes.light : "Not specified" %></p>
@@ -98,7 +104,10 @@
                 <p>Records: <%= result.meta.pagination.records %></p>
             </form>
         </div>
+    <% } else if (result.data && result.data.length === 0) { %>
+        <p>No results found.</p>
     <% } else { %>
+        <!-- Display of homepage info if a search has not yet been performed -->
         <h2>Welcome to Harry Potter PensieveDB!</h2>
         <p>Here you can find everything you need to know about the magical world of Harry Potter, from the books that started it all, to the movies that brought it to life, to the characters that made it unforgettable. You can also discover the secrets of potions and spells.</p>
         <p>So what are you waiting for? Select a category and start the magic!</p>
