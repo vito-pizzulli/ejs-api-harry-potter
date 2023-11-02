@@ -27,7 +27,7 @@ Harry Potter Pensieve è una web-app che ti permette di esplorare il mondo di Ha
 5. Avvia il server locale con il seguente comando: `node index.js`.
 
 ## Come Utilizzare
-1. Apri il tuo browser e vai all'indirizzo localhost:3000 per utilizzare l'applicazione.
+1. Apri il tuo browser e vai all'indirizzo `localhost:3000` per utilizzare l'applicazione.
 2. Sulla pagina principale, scegli una categoria tra Libri, Personaggi, Film, Pozioni e Incantesimi cliccando sul relativo bottone.
 3. Verranno visualizzati tutti gli elementi relativi alla categoria scelta, organizzati in pagine. Puoi navigare tra le pagine usando i pulsanti in basso.
 4. Se vuoi cercare un elemento specifico nella categoria scelta, scrivi il testo nella barra di ricerca in alto e premi invio. Verranno mostrati solo gli elementi che corrispondono al testo inserito.
