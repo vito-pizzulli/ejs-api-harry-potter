@@ -102,14 +102,14 @@
                 <% } %>
                 <p>Current (<%= result.meta.pagination.current %>)</p>
                 <% if (result.meta.pagination.next) { %>
-                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.next %>">> Next (<%= result.meta.pagination.next %>)</button>
+                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.next %>">Next > (<%= result.meta.pagination.next %>)</button>
                 <% } else { %>
-                    <button disabled>> Next</button>
+                    <button disabled>Next ></button>
                 <% } %>
                 <% if (result.meta.pagination.last) { %>
-                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.last %>">>> Last (<%= result.meta.pagination.last %>)</button>
+                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.last %>">Last >> (<%= result.meta.pagination.last %>)</button>
                 <% } else { %>
-                    <button disabled>>> Last</button>
+                    <button disabled>Last >></button>
                 <% } %>
                 <p>Results: <%= result.meta.pagination.records %></p>
             </form>
