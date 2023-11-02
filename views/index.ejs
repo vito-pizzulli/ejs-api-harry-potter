@@ -1,6 +1,6 @@
 <%- include("partials/header.ejs") %>
 
-<div class="container">
+<div class="container-fluid">
     <!-- User selection of what to view with category selection or text search -->
     <div class="nav-buttons">
         <form id="search-type" method="GET">
@@ -21,56 +21,66 @@
 
     <!-- Display of the searched info -->
     <% if (result.data && result.data.length > 0) { %>
-        <div class="card-container">
+        <div class="card-container row">
             <% result.data.forEach(function(item) { %>
                 <% if (item.type === "book") { %>
-                    <div class="card">
-                        <img src="<%= item.attributes.cover || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.cover %>">
+                    <div class="card col-5 col-md-2">
+                        <div class="card-image">
+                            <img src="<%= item.attributes.cover || '/images/default.jpg' %>" alt="<%= item.attributes.cover %>">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title"><%= item.attributes.title ? item.attributes.title : "Not specified" %></h5>
-                            <p class="card-text">Pages: <%= item.attributes.pages ? item.attributes.pages : "Not specified" %></p>
-                            <p class="card-text">Author: <%= item.attributes.author ? item.attributes.author : "Not specified" %></p>
-                            <p class="card-text">Release date: <%= item.attributes.release_date ? item.attributes.release_date : "Not specified" %></p>
+                            <h3 class="card-title"><%= item.attributes.title ? item.attributes.title : "Not specified" %></h3>
+                            <p class="card-text"><strong>Pages:</strong> <%= item.attributes.pages ? item.attributes.pages : "Not specified" %></p>
+                            <p class="card-text"><strong>Author:</strong> <%= item.attributes.author ? item.attributes.author : "Not specified" %></p>
+                            <p class="card-text"><strong>Release date:</strong> <%= item.attributes.release_date ? new Date(item.attributes.release_date).toLocaleDateString() : "Not specified" %></p>
                         </div>
                     </div>
                 <% } else if (item.type === "character") { %>
-                    <div class="card">
-                        <img src="<%= item.attributes.image || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.name %>">
+                    <div class="card col-5 col-md-2">
+                        <div class="card-image">
+                            <img src="<%= item.attributes.image || '/images/default.jpg' %>" alt="<%= item.attributes.name %>">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title"><%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
-                            <p class="card-text">Species: <%= item.attributes.species ? item.attributes.species : "Not specified" %></p>
-                            <p class="card-text">Gender: <%= item.attributes.gender ? item.attributes.gender : "Not specified" %></p>
-                            <p class="card-text">Born: <%= item.attributes.born ? item.attributes.born : "Not specified" %></p>
+                            <h3 class="card-title"><%= item.attributes.name ? item.attributes.name : "Not specified" %></h3>
+                            <p class="card-text"><strong>Species:</strong> <%= item.attributes.species ? item.attributes.species : "Not specified" %></p>
+                            <p class="card-text"><strong>Gender:</strong> <%= item.attributes.gender ? item.attributes.gender : "Not specified" %></p>
+                            <p class="card-text"><strong>Born:</strong> <%= item.attributes.born ? item.attributes.born : "Not specified" %></p>
                         </div>
                     </div>
                 <% } else if (item.type === "movie") { %>
-                    <div class="card">
-                        <img src="<%= item.attributes.poster || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.poster %>">
+                    <div class="card col-5 col-md-2">
+                        <div class="card-image">
+                            <img src="<%= item.attributes.poster || '/images/default.jpg' %>" alt="<%= item.attributes.poster %>">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title"><%= item.attributes.title ? item.attributes.title : "Not specified" %></h5>
-                            <p class="card-text">Running time: <%= item.attributes.running_time ? item.attributes.running_time : "Not specified" %></p>
-                            <p class="card-text">Box office: <%= item.attributes.box_office ? item.attributes.box_office : "Not specified" %></p>
-                            <p class="card-text">Release date: <%= item.attributes.release_date ? item.attributes.release_date : "Not specified" %></p>
+                            <h3 class="card-title"><%= item.attributes.title ? item.attributes.title : "Not specified" %></h3>
+                            <p class="card-text"><strong>Running time:</strong> <%= item.attributes.running_time ? item.attributes.running_time : "Not specified" %></p>
+                            <p class="card-text"><strong>Box office:</strong> <%= item.attributes.box_office ? item.attributes.box_office : "Not specified" %></p>
+                            <p class="card-text"><strong>Release date:</strong> <%= item.attributes.release_date ? new Date(item.attributes.release_date).toLocaleDateString() : "Not specified" %></p>
                         </div>
                     </div>
                 <% } else if (item.type === "potion") { %>
-                    <div class="card">
-                        <img src="<%= item.attributes.image || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.image %>">
+                    <div class="card col-5 col-md-2">
+                        <div class="card-image">
+                            <img src="<%= item.attributes.image || '/images/default.jpg' %>" alt="<%= item.attributes.image %>">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title"><%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
-                            <p class="card-text">Effect: <%= item.attributes.effect ? item.attributes.effect : "Not specified" %></p>
-                            <p class="card-text">Difficulty: <%= item.attributes.difficulty ? item.attributes.difficulty : "Not specified" %></p>
-                            <p class="card-text">Ingredients: <%= item.attributes.ingredients ? item.attributes.ingredients : "Not specified" %></p>
+                            <h3 class="card-title"><%= item.attributes.name ? item.attributes.name : "Not specified" %></h3>
+                            <p class="card-text"><strong>Effect:</strong> <%= item.attributes.effect ? item.attributes.effect : "Not specified" %></p>
+                            <p class="card-text"><strong>Difficulty:</strong> <%= item.attributes.difficulty ? item.attributes.difficulty : "Not specified" %></p>
+                            <p class="card-text"><strong>Ingredients:</strong> <%= item.attributes.ingredients ? item.attributes.ingredients : "Not specified" %></p>
                         </div>
                     </div>
                 <% } else if (item.type === "spell") { %>
-                    <div class="card">
-                        <img src="<%= item.attributes.image || '/images/default.jpg' %>" class="card-img-top" alt="<%= item.attributes.image %>">
+                    <div class="card col-5 col-md-2">
+                        <div class="card-image">
+                            <img src="<%= item.attributes.image || '/images/default.jpg' %>" alt="<%= item.attributes.image %>">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title"><%= item.attributes.name ? item.attributes.name : "Not specified" %></h5>
-                            <p class="card-text">Effect: <%= item.attributes.effect ? item.attributes.effect : "Not specified" %></p>
-                            <p class="card-text">Category: <%= item.attributes.category ? item.attributes.category : "Not specified" %></p>
-                            <p class="card-text">Light: <%= item.attributes.light ? item.attributes.light : "Not specified" %></p>
+                            <h3 class="card-title"><%= item.attributes.name ? item.attributes.name : "Not specified" %></h3>
+                            <p class="card-text"><strong>Effect:</strong> <%= item.attributes.effect ? item.attributes.effect : "Not specified" %></p>
+                            <p class="card-text"><strong>Category:</strong> <%= item.attributes.category ? item.attributes.category : "Not specified" %></p>
+                            <p class="card-text"><strong>Light:</strong> <%= item.attributes.light ? item.attributes.light : "Not specified" %></p>
                         </div>
                     </div>
                 <% } %>
@@ -81,36 +91,38 @@
         <div class="pag-buttons">
             <form method="GET">
                 <% if (result.meta.pagination.first) { %>
-                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.first %>">First (<%= result.meta.pagination.first %>)</button>
+                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.first %>"><< First (<%= result.meta.pagination.first %>)</button>
                 <% } else { %>
-                    <button disabled>First</button>
+                    <button disabled><< First</button>
                 <% } %>
                 <% if (result.meta.pagination.prev) { %>
-                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.prev %>">Previous (<%= result.meta.pagination.prev %>)</button>
+                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.prev %>">< Previous (<%= result.meta.pagination.prev %>)</button>
                 <% } else { %>
-                    <button disabled>Previous</button>
+                    <button disabled>< Previous</button>
                 <% } %>
                 <p>Current (<%= result.meta.pagination.current %>)</p>
                 <% if (result.meta.pagination.next) { %>
-                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.next %>">Next (<%= result.meta.pagination.next %>)</button>
+                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.next %>">> Next (<%= result.meta.pagination.next %>)</button>
                 <% } else { %>
-                    <button disabled>Next</button>
+                    <button disabled>> Next</button>
                 <% } %>
                 <% if (result.meta.pagination.last) { %>
-                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.last %>">Last (<%= result.meta.pagination.last %>)</button>
+                    <button type="submit" formaction="/<%= result.data[0].type %>s/page/<%= result.meta.pagination.last %>">>> Last (<%= result.meta.pagination.last %>)</button>
                 <% } else { %>
-                    <button disabled>Last</button>
+                    <button disabled>>> Last</button>
                 <% } %>
-                <p>Records: <%= result.meta.pagination.records %></p>
+                <p>Results: <%= result.meta.pagination.records %></p>
             </form>
         </div>
     <% } else if (result.data && result.data.length === 0) { %>
         <p>No results found.</p>
     <% } else { %>
         <!-- Display of homepage info if a search has not yet been performed -->
-        <h2>Welcome to Harry Potter Pensieve!</h2>
-        <p>Here you can find everything you need to know about the magical world of Harry Potter, from the books that started it all, to the movies that brought it to life, to the characters that made it unforgettable. You can also discover the secrets of potions and spells.</p>
-        <p>So what are you waiting for? Select a category and start the magic!</p>
+        <div class="homepage">
+            <h2>Welcome to Harry Potter Pensieve!</h2>
+            <p>Here you can find everything you need to know about the magical world of Harry Potter, from the books that started it all, to the movies that brought it to life, to the characters that made it unforgettable. You can also discover the secrets of potions and spells.</p>
+            <p>So what are you waiting for? Select a category and start the magic!</p>
+        </div>
     <% } %>
 </div>
 

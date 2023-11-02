@@ -1,38 +1,55 @@
+@font-face {
+    font-family: Harry Potter;
+    src: url(../fonts/HARRYP__.TTF);
+}
+
+* {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
 body {
     cursor:url('/images/wand.cur'), auto;
 }
 
 header {
     height: 10vh;
-    background-color: red;
+    background-color: #3c394e;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 3px solid white;
 }
 
 main {
     height: 85vh;
     overflow-y: scroll;
-    background-color: yellow;
-    padding: 4rem 0;
+    padding: 5rem 0;
+    background-image: url(../images/hogwarts.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 25% 25%;
 }
 
 footer {
     height: 5vh;
-    background-color: green;
+    background-color: #3c394e;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    border-top: 3px solid white;
 }
 
 footer p {
     margin: 0;
+    font-size: 1.2rem;
 }
 
 div.nav-buttons {
     position: fixed;
-    background-color: white;
+    background-color: #e2b1ad;
     top: 10vh;
     left: 0;
     width: 100%;
@@ -42,6 +59,7 @@ div.nav-buttons {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border-bottom: 3px solid white;
 }
 
 div.nav-buttons form {
@@ -54,21 +72,37 @@ div.nav-buttons form {
 div.card-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
 }
 
 div.card {
-    width: calc(100% / 5);
+    padding: 0;
+    border-radius: 20px;
 }
 
-div.card img {
-    object-position: center;
-    object-fit: cover;
+div.card div.card-image {
+    background-color: black;
     aspect-ratio: 1/1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+}
+
+div.card div.card-image img {
+    width: 100%;
+    transition: all .3s ease;
+}
+
+div.card div.card-image img:hover {
+    transform: scale(1.05);
 }
 
 div.pag-buttons {
     position: fixed;
-    background-color: white;
+    background-color: #e2b1ad;
     bottom: 5vh;
     left: 0;
     width: 100%;
@@ -84,4 +118,73 @@ div.pag-buttons form {
 
 div.pag-buttons form p {
     margin: 0;
+    font-size: 1.2rem;
+    background-color: white;
+    color: black;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+}
+
+div.homepage {
+    color: white;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    width: 50%;
+    margin: 5rem auto;
+}
+
+div.homepage h2 {
+    font-size: 5rem;
+}
+
+div.homepage p {
+    font-size: 1.8rem;
+}
+
+h1, h2 {
+    font-family: Harry Potter, sans-serif;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+h3 {
+    font-size: 1.7rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+button {
+    background-color: #3c394e;
+    color: white;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: all .3s ease;
+}
+
+button:disabled {
+    background-color: grey;
+    color: lightgrey;
+}
+
+button:not(:disabled):hover {
+    background-color: #7e6f85;
+}
+
+input {
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    width: 50%;
+    padding: 0 1rem;
+}
+
+input:focus {
+    outline: 2px solid #3c394e;
 }
