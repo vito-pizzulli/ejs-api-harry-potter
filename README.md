@@ -1,6 +1,6 @@
 # Harry Potter Pensieve
 
-![App Screenshot](public/images/screenshot.png)
+![App Screenshot](public/images/preview.png)
 
 ## Descrizione
 Harry Potter Pensieve è una web-app che ti permette di esplorare il mondo di Harry Potter scegliendo tra diverse categorie: Libri, Personaggi, Film, Pozioni e Incantesimi. I risultati sono visualizzati come card contenenti le informazioni principali, e sono organizzati in pagine da poter sfogliare in maniera semplice e intuitiva.
