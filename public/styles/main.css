@@ -104,6 +104,7 @@ div.pag-buttons {
     width: 100%;
     padding: .5rem 1rem;
     user-select: none;
+    border-top: 3px solid white;
 }
 
 div.nav-buttons form,
