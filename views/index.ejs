@@ -13,7 +13,7 @@
         </form>
         <% if (result.data && result.data.length > 0) { %>
             <form id="search-word" method="GET" action="/<%= result.data[0].type %>s/search">
-                <input type="text" name="wordToSearch">
+                <input type="text" name="wordToSearch" required>
                 <button>Search</button>
             </form>
         <% } %>
@@ -115,7 +115,7 @@
             </form>
         </div>
     <% } else if (result.data && result.data.length === 0) { %>
-        <p>No results found.</p>
+        <p class="no-results">No results found!</p>
     <% } else { %>
         <!-- Display of homepage info if a search has not yet been performed -->
         <div class="homepage">

@@ -40,6 +40,7 @@ footer {
     align-items: center;
     padding: 1rem;
     border-top: 3px solid white;
+    user-select: none;
 }
 
 footer p {
@@ -62,13 +63,6 @@ div.nav-buttons {
     border-bottom: 3px solid white;
 }
 
-div.nav-buttons form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
-
 div.card-container {
     display: flex;
     flex-wrap: wrap;
@@ -79,6 +73,8 @@ div.card-container {
 div.card {
     padding: 0;
     border-radius: 20px;
+    border: none;
+    max-width: 400px;
 }
 
 div.card div.card-image {
@@ -107,12 +103,15 @@ div.pag-buttons {
     left: 0;
     width: 100%;
     padding: .5rem 1rem;
+    user-select: none;
 }
 
+div.nav-buttons form,
 div.pag-buttons form {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -131,6 +130,7 @@ div.homepage {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     width: 50%;
     margin: 5rem auto;
+    user-select: none;
 }
 
 div.homepage h2 {
@@ -147,15 +147,25 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 4.5rem;
+    margin: 0;
+    user-select: none;
 }
 
 h3 {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 
 p {
-    font-size: 1.2rem;
+    margin-bottom: .5rem;
+}
+
+p.no-results {
+    text-align: center;
+    font-size: 1.8rem;
+    color: white;
+    margin-top: 5rem;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 button {
@@ -164,7 +174,6 @@ button {
     padding: .5rem 1rem;
     border: none;
     border-radius: 10px;
-    font-size: 1.2rem;
     transition: all .3s ease;
 }
 
@@ -187,4 +196,26 @@ input {
 
 input:focus {
     outline: 2px solid #3c394e;
+}
+
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: 4rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    p {
+        font-size: .8rem;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    footer p {
+        font-size: 1.1rem;
+    }
 }
